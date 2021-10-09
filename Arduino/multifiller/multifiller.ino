@@ -1,4 +1,3 @@
-//#include "PinChangeInt.h"
 #include <EEPROM.h>
 
 ///// Define pins ////
@@ -51,19 +50,7 @@ void setup() {
 
   Serial.println("Startup complete!");
   Serial.println("Waiting for input!");
-
-  //INTERRUPTS
-  //Calibrate Beer filling time, only use beerValve1
-  //attachPinChangeInterrupt(CalibrateButton, CalibrateButtonFunction, CHANGE);
-  //Run beerfiller #1
-  //attachPinChangeInterrupt(BeerFiller1Button, BeerFiller1ButtonFunction, CHANGE);
-  //Run both beerfillers
-  //attachPinChangeInterrupt(BeerFiller12Button, BeerFiller12ButtonFunction, CHANGE);
-  //Emergency ShutDown
-  //attachPinChangeInterrupt(EmergencyShutDownButton, EmergencyShutDownButtonFunction, CHANGE);
-
-  Serial.println("...");
-  
+  Serial.println("..."); 
 }
 
 void loop() {
