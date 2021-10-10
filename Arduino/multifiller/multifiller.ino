@@ -5,16 +5,6 @@
 //Calibrate - Time how long it takes to fill the can
 #define CalibrateButton 30 //Atmega328p-pu pin xx
 
-//Define values
-int CanFillUpTimeCalibrated = 0;
-int CanFillUpTime = 0; // 10 seconds 
-int Calibratedms = 0;
-int CountDelayValueMs = 500; //should not be lower than 250
-int countButtonPress = 0;
-int Co2PurgeBeforeDelay = 2500; //2,5 seconds
-int Co2PurgeAfterCountLimit = 8; // on/off 8 times
-int Co2PurgeAfterCount = 0; // Counter
-
 //Controller
 #define BeerFiller1Button 31 //Atmega328p-pu pin xx - Only Filler #1
 #define BeerFiller12Button 32 //Atmega328p-pu pin xx - Run both fillers
@@ -27,6 +17,15 @@ int Co2PurgeAfterCount = 0; // Counter
 #define BeerValve2 24 //Atmega328p-pu pin xx
 #define GasValve2 25 //Atmega328p-pu pin xx
 
+//Define values
+int CanFillUpTimeCalibrated = 0;
+int CanFillUpTime = 0; // Count loops (to be able to store 255 max loops), multiply with CountDelayValueMs
+int Calibratedms = 0;
+int CountDelayValueMs = 500; //should not be lower than 250
+int countButtonPress = 0;
+int Co2PurgeBeforeDelay = 2500; //2,5 seconds
+int Co2PurgeAfterCountLimit = 8; // on/off 8 times
+int Co2PurgeAfterCount = 0; // Counter
 
 
 void setup() {
@@ -168,12 +167,24 @@ void BeerValve2FillCan(){
 
 //BeerValve both - Fill cans
 void BeerValveFillCans(){
-  Serial.println("BeerValveFillCans");
+   int CanFillUpTime = EEPROM.read(0);
+   Serial.println("Start - Beer Valve 1 and 2 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
    digitalWrite(BeerValve1,HIGH);
    digitalWrite(BeerValve2,HIGH);
-   delay(CanFillUpTime);
+
+   int LoopCount = 0;
+   long LoopCountMs = 0;
+   while(LoopCount <= CanFillUpTime){
+    delay(CountDelayValueMs);
+    LoopCount++;
+    LoopCountMs = LoopCount * CountDelayValueMs;
+    Serial.println("Current fill time (ms): " + String(LoopCountMs));
+   }
+   //delay(CanFillUpTime);
    digitalWrite(BeerValve1,LOW);
    digitalWrite(BeerValve2,LOW);
+   Serial.println("End - Beer Valve 1 Fill Can (ms): " + String(LoopCountMs));
+   
 }
 
 
@@ -182,13 +193,14 @@ void BeerValveFillCans(){
 void GasValve1Co2PurgeAfter(){
   Serial.println("GasValve1Co2PurgeAfter");
   while(Co2PurgeAfterCount <= Co2PurgeAfterCountLimit){
-   Serial.println("+");
+   Serial.print("+");
    digitalWrite(GasValve1,HIGH);
    delay(25);
    digitalWrite(GasValve1,LOW);
    delay(25);
    Co2PurgeAfterCount++;
   }
+  Serial.println("+");
   Co2PurgeAfterCount = 0;
   //Safety
   digitalWrite(GasValve1,LOW);
@@ -198,13 +210,14 @@ void GasValve1Co2PurgeAfter(){
 void GasValve2Co2PurgeAfter(){
   Serial.println("GasValve2Co2PurgeAfter");
   while(Co2PurgeAfterCount <= Co2PurgeAfterCountLimit){
-    Serial.println("+");
+    Serial.print("+");
    digitalWrite(GasValve2,HIGH);
    delay(25);
    digitalWrite(GasValve2,LOW);
    delay(25);
    Co2PurgeAfterCount++;
   }
+  Serial.println("+");
   Co2PurgeAfterCount = 0;
   //Safety
   digitalWrite(GasValve2,LOW);
@@ -214,7 +227,7 @@ void GasValve2Co2PurgeAfter(){
 void GasValvesCo2PurgeAfter(){
   Serial.println("GasValvesCo2PurgeAfter");
   while(Co2PurgeAfterCount <= Co2PurgeAfterCountLimit){
-    Serial.println("+");
+    Serial.print("+");
     digitalWrite(GasValve1,HIGH);
    digitalWrite(GasValve2,HIGH);
    delay(25);
@@ -223,7 +236,7 @@ void GasValvesCo2PurgeAfter(){
    delay(25);
    Co2PurgeAfterCount++;
    }
-  
+   Serial.println("+");
   Co2PurgeAfterCount = 0;
   //Safety
   digitalWrite(GasValve1,LOW);
