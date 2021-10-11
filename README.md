@@ -30,17 +30,17 @@ Button#1
 Button#2
 
     - Momentarily press button#2
-    - Filler#1: Co2 will purge for 4 seconds
-    - Filler#1: Beer flows for x (calibrated seconds)
-    - Filler#1: Co2 will purge on/off rapidly 8 times
+       Filler#1: Co2 will purge for 4 seconds
+       Filler#1: Beer flows for x (calibrated seconds)
+       Filler#1: Co2 will purge on/off rapidly 8 times
 
 ## Filler #1 and #2
 Button#3
 
     - Momentarily press button#2
-    - Filler#1 and #2: Co2 will purge for 4 seconds
-    - Filler#1 and #2: Beer flows for x (calibrated seconds)
-    - Filler#1 and #2: Co2 will purge on/off rapidly 8 times
+       Filler#1 and #2: Co2 will purge for 4 seconds
+       Filler#1 and #2: Beer flows for x (calibrated seconds)
+       Filler#1 and #2: Co2 will purge on/off rapidly 8 times
 
 </br>
 </br>
