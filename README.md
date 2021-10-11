@@ -7,6 +7,8 @@ Modual Beercan filler
 |Pcs | Name | Price | Price subtotal (sek) | Description	| link |
 | -- | --------- | ---------- | ------------- | ----------- | ---- |
 |2|12v solenoid valve - 1/4" (6,35mm)     |	65  |130    |1 gas, 1 beer  |	https://www.wish.com/product/5de4e26dd52cb3c890403e0f|
+|4|12v Diode (1N4001 DO-41 50V 1A)        |	1.50  | 6    |Protect relay from solenoid kickback  |	https://www.electrokit.com/produkt/1n4001-do-41-50v-1a/|
+|4|Resistor 0.25W 10-50kohm (10k)        |	1  | 4    |Pulldown resistor  |	https://www.electrokit.com/produkt/motstand-kolfilm-0-25w-10kohm-10k/|
 |2|PE-slang 1/4" (4,3 x 6,35 mm) neutral|	19	|38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter|
 |2|PE-slang 3/8" (6,7 x 9,5 mm) neutral |	19  |38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-38-yd-per-meter|
 |0|John Guest 3/8", Y                   |	39	|0		|Y-koppling	    |https://shop.humle.se/utrustning/kopplingar/push-in-kopplingar-jg/jg-38/john-guest-38-y|
@@ -25,6 +27,8 @@ Just add some more solenoid valves, relays and tubing
 |Pcs | Name | Price | Price subtotal (sek) | Description	| link |
 | -- | --------- | ---------- | ------------- | ----------- | ---- |
 |4|12v solenoid valve - 1/4" (6,35mm)     |	65  |130    |2 gas, 2 beer  |	https://www.wish.com/product/5de4e26dd52cb3c890403e0f|
+|4|12v Diode (1N4001 DO-41 50V 1A)        |	1.50  | 6    |Protect relay from solenoid kickback  |	https://www.electrokit.com/produkt/1n4001-do-41-50v-1a/|
+|4|Resistor 0.25W 10-50kohm (10k)        |	1  | 4    |Pulldown resistor  |	https://www.electrokit.com/produkt/motstand-kolfilm-0-25w-10kohm-10k/|
 |4|PE-slang 1/4" (4,3 x 6,35 mm) neutral|	19	|38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter|
 |4|PE-slang 3/8" (6,7 x 9,5 mm) neutral |	19  |38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-38-yd-per-meter|
 |2|John Guest 3/8", Y                   |	39	|0		|Y-koppling	    |https://shop.humle.se/utrustning/kopplingar/push-in-kopplingar-jg/jg-38/john-guest-38-y|
