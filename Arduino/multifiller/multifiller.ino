@@ -1,4 +1,4 @@
-#include <EEPROM.h>
+#include "EEPROM.h"
 #include "PinChangeInt.h"
 
 ///// Define pins ////
@@ -105,14 +105,7 @@ void loop() {
     Serial.println("BeerFiller12Button pressed");
     BeerFiller12ButtonFunction();
     delay(25);
-  }  
-
-  // EmergencyShutDownButton
-  //if (digitalRead(EmergencyShutDownButton) == HIGH) {
-  //  Serial.println("EmergencyShutDownButton pressed");
-  //  EmergencyShutDownButtonFunction();
-  //  delay(25);
-  //}  
+  }
 
   delay(100);
 }
@@ -145,11 +138,6 @@ void CalibrateButtonFunction(){
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
     
-    //int CanFillUpTimeRead = EEPROM.read(0);
-    //Serial.println("ms: " + String(CanFillUpTimeRead));
-    //String StrCanFillUpTime = "Calibrated CanFillUpTime (ms):" + String(CanFillUpTime);
-    //Serial.println(StrCanFillUpTime);
-    //return CanFillUpTime;
 }
 
 //GasValve1 - Co2 Co2 Purge Before filling
@@ -188,15 +176,6 @@ void BeerValve1FillCan(){
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
     digitalWrite(BeerValve1,HIGH);
-
-   //int LoopCount = 0;
-   //long LoopCountMs = 0;
-   //while(LoopCount <= CanFillUpTime){
-   // delay(CountDelayValueMs);
-   // LoopCount++;
-   // LoopCountMs = LoopCount * CountDelayValueMs;
-   // Serial.println("Current fill time (ms): " + String(LoopCountMs));
-   //}
    
    delay(CanFillUpTime);
    digitalWrite(BeerValve1,LOW);
@@ -213,15 +192,6 @@ void BeerValve2FillCan(){
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
     digitalWrite(BeerValve2,HIGH);
-
-   //int LoopCount = 0;
-   //long LoopCountMs = 0;
-   //while(LoopCount <= CanFillUpTime){
-   // delay(CountDelayValueMs);
-   // LoopCount++;
-   // LoopCountMs = LoopCount * CountDelayValueMs;
-   // Serial.println("Current fill time (ms): " + String(LoopCountMs));
-   //}
    
    delay(CanFillUpTime);
    digitalWrite(BeerValve2,LOW);
@@ -239,16 +209,7 @@ void BeerValveFillCans(){
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
     digitalWrite(BeerValve1,HIGH);
     digitalWrite(BeerValve2,HIGH);
-
-   //int LoopCount = 0;
-   //long LoopCountMs = 0;
-   //while(LoopCount <= CanFillUpTime){
-   // delay(CountDelayValueMs);
-   // LoopCount++;
-   // LoopCountMs = LoopCount * CountDelayValueMs;
-   // Serial.println("Current fill time (ms): " + String(LoopCountMs));
-   //}
-   
+  
    delay(CanFillUpTime);
    digitalWrite(BeerValve1,LOW);
    digitalWrite(BeerValve2,LOW);
