@@ -1,4 +1,5 @@
 #include <EEPROM.h>
+#include "PinChangeInt.h"
 
 ///// Define pins ////
 
@@ -8,7 +9,9 @@
 //Controller
 #define BeerFiller1Button 31 //Atmega328p-pu pin xx - Only Filler #1
 #define BeerFiller12Button 32 //Atmega328p-pu pin xx - Run both fillers
-#define EmergencyShutDownButton 33 //Atmega328p-pu pin xx - Stop everything
+#define EmergencyShutDownButton A10 //Atmega328p-pu interrupt pin xx - Stop everything
+//Arduino Uno/Nano/Mini: All pins are usable
+//Arduino Mega: 10, 11, 12, 13, 50, 51, 52, 53, A8 (62), A9 (63), A10 (64),A11 (65), A12 (66), A13 (67), A14 (68), A15 (69)
 
 //Filler 1
 #define BeerValve1 22 //Atmega328p-pu pin xx
@@ -50,6 +53,8 @@ void setup() {
   Serial.println("Startup complete!");
   Serial.println("Waiting for input!");
   Serial.println("..."); 
+
+  attachPinChangeInterrupt(EmergencyShutDownButton, EmergencyShutDownButtonFunction, CHANGE);
 }
 
 //EEPROM Write, writeEEPROM(0, "Hello Arduino");
@@ -103,11 +108,11 @@ void loop() {
   }  
 
   // EmergencyShutDownButton
-  if (digitalRead(EmergencyShutDownButton) == HIGH) {
-    Serial.println("EmergencyShutDownButton pressed");
-    EmergencyShutDownButtonFunction();
-    delay(25);
-  }  
+  //if (digitalRead(EmergencyShutDownButton) == HIGH) {
+  //  Serial.println("EmergencyShutDownButton pressed");
+  //  EmergencyShutDownButtonFunction();
+  //  delay(25);
+  //}  
 
   delay(100);
 }
@@ -320,12 +325,19 @@ void SoftStopFunction(){
 void EmergencyShutDownButtonFunction(){
   Serial.println("EmergencyShutDownButtonFunction");
   while(digitalRead(EmergencyShutDownButton) == HIGH){
-    Serial.println("+");
+    Serial.print("+");
     digitalWrite(GasValve1,LOW);
     digitalWrite(GasValve2,LOW);
     digitalWrite(BeerValve1,LOW);
     digitalWrite(BeerValve2,LOW);
+    delay(100);
   }
+    digitalWrite(GasValve1,LOW);
+    digitalWrite(GasValve2,LOW);
+    digitalWrite(BeerValve1,LOW);
+    digitalWrite(BeerValve2,LOW);
+    Serial.println("Going into softstop");
+    SoftStopFunction();
 }
 
 
