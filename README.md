@@ -17,6 +17,8 @@ button#3 = Filler #1 and Filler #2 at same time (Momentarily press)</br>
 button#4 = Emergency shutdown (Press and hold)</br>
 
 ## Calibration
+Button#1
+
     - Press and hold button#1 (it will start to pour beer from Filler #1)
     This is to calibrate how long it takes to fill your can or bottle
     When the can/bottle is filled to desired levels, release the button#1
@@ -25,12 +27,16 @@ button#4 = Emergency shutdown (Press and hold)</br>
 </br>
 
 ## Test fill / Filler #1 
+Button#2
+
     - Momentarily press button#2
     - Filler#1: Co2 will purge for 4 seconds
     - Filler#1: Beer flows for x (calibrated seconds)
     - Filler#1: Co2 will purge on/off rapidly 8 times
 
 ## Filler #1 and #2
+Button#3
+
     - Momentarily press button#2
     - Filler#1 and #2: Co2 will purge for 4 seconds
     - Filler#1 and #2: Beer flows for x (calibrated seconds)
@@ -38,6 +44,11 @@ button#4 = Emergency shutdown (Press and hold)</br>
 
 </br>
 </br>
+
+## Emergency shutdown
+button#4
+
+    - Emergency shutdown (Press and hold)</br>
 
 ## Single filler
 
