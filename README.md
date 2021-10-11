@@ -1,6 +1,13 @@
 # MultiFiller
 Modual Beercan filler
 
+## Navigation
+
+* Build
+* Schematics
+* Videos 
+* Parts
+
 
 ## Single filler
 
