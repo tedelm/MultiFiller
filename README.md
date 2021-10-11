@@ -4,7 +4,7 @@ Modual Beercan filler
 
 ## Single filler
 
-|Pcs | Name | Price | Price subtotal | Description	| link |
+|Pcs | Name | Price | Price subtotal (sek) | Description	| link |
 | -- | --------- | ---------- | ------------- | ----------- | ---- |
 |2|12v Magnetventil - 1/4" (6,35mm)     |	65 |	130 |	2 gas, 2 öl Ventil |	https://www.wish.com/product/5de4e26dd52cb3c890403e0f|
 |2|PE-slang 1/4" (4,3 x 6,35 mm) neutral|	19	|38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter|
