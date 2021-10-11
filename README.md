@@ -18,7 +18,8 @@ button#4 = Emergency shutdown (Press and hold)</br>
 
 ## Calibration
     - Press and hold button#1 (it will start to pour beer from Filler #1)
-    this is to calibrate how long it takes to fill your can or bottle
+    This is to calibrate how long it takes to fill your can or bottle
+    When the can/bottle is filled to desired levels, release the button#1
 
 </br>
 </br>
