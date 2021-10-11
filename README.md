@@ -1,9 +1,9 @@
 # MultiFiller
 Beercan filler
 
-|Antal |	Art.nr | Benämning | Pris styck | Pris subtotal | Beskrivning	| Del |	länk|
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-|2||12v Magnetventil - 1/4" (6,35mm)     |	65 |	130 |	2 gas, 2 öl	| Ventil |	https://www.wish.com/product/5de4e26dd52cb3c890403e0f|
+|Antal |	Art.nr | Benämning | Pris styck | Pris subtotal | Beskrivning	| länk|
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+|2||12v Magnetventil - 1/4" (6,35mm)     |	65 |	130 |	2 gas, 2 öl Ventil |	https://www.wish.com/product/5de4e26dd52cb3c890403e0f|
 |2||PE-slang 1/4" (4,3 x 6,35 mm) neutral|	19	|38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter|
 |2||PE-slang 3/8" (6,7 x 9,5 mm) neutral |	19  |38		|slang	        |https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-38-yd-per-meter|
 |0||John Guest 3/8", Y                   |	39	|0		|Y-koppling	    |https://shop.humle.se/utrustning/kopplingar/push-in-kopplingar-jg/jg-38/john-guest-38-y|
