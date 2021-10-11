@@ -9,6 +9,7 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 * Videos 
 * Parts
 
+</br>
 
 # How to use
 button#1 = Calibration (Press and hold)</br>
@@ -23,7 +24,6 @@ Button#1
     This is to calibrate how long it takes to fill your can or bottle
     When the can/bottle is filled to desired levels, release the button#1
 
-</br>
 </br>
 
 ## Test fill / Filler #1 
@@ -43,12 +43,13 @@ Button#3
        Filler#1 and #2: Co2 will purge on/off rapidly 8 times
 
 </br>
-</br>
 
 ## Emergency shutdown
 button#4
 
-    - Emergency shutdown (Press and hold)</br>
+    - Emergency shutdown (Press and hold)
+
+</br>
 
 ## Single filler
 
