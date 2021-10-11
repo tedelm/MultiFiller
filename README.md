@@ -1,5 +1,6 @@
 # MultiFiller
-Modual Beercan filler
+Modual Beercan filler </br></br>
+MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 
 ## Navigation
 
@@ -8,6 +9,33 @@ Modual Beercan filler
 * Videos 
 * Parts
 
+
+# How to use
+button#1 = Calibration (Press and hold)</br>
+button#2 = Filler #1 (Momentarily press)</br>
+button#3 = Filler #1 and Filler #2 at same time (Momentarily press)</br>
+button#4 = Emergency shutdown (Press and hold)</br>
+
+## Calibration
+    - Press and hold button#1 (it will start to pour beer from Filler #1), this is to calibrate how long it takes to fill your can or bottle
+
+</br>
+</br>
+
+## Test fill / Filler #1 
+    - Momentarily press button#2
+    - Filler#1: Co2 will purge for 4 seconds
+    - Filler#1: Beer flows for x (calibrated seconds)
+    - Filler#1: Co2 will purge on/off rapidly 8 times
+
+## Filler #1 and #2
+    - Momentarily press button#2
+    - Filler#1 and #2: Co2 will purge for 4 seconds
+    - Filler#1 and #2: Beer flows for x (calibrated seconds)
+    - Filler#1 and #2: Co2 will purge on/off rapidly 8 times
+
+</br>
+</br>
 
 ## Single filler
 
