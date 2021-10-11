@@ -66,9 +66,12 @@ button#4
 |1|John Guest 3/8" - 1/4" FFL           |	39	|39	    |1 gas, 1 öl	öl/gas koppling	|https://shop.humle.se/utrustning/kopplingar/push-in-kopplingar-jg/jg-38/john-guest-38-14-ffl|
 |1|PET-adapter (plast)                  |	69	|69		|gas-koppling	|https://shop.humle.se/utrustning/fattappning/servering/tillbehor-ovrigt/pet-adapter-plast|
 |1|Gängad kulkoppling - 1/4" MFL - öl   |	89	|89		|öl-koppling	|https://shop.humle.se/utrustning/kopplingar/fatkopplingar/kulkopplingar/ol/gangad-kulkoppling-14-mfl-ol|
-|2|Arduino 5v relay                      |	39	|78		|relä	|https://cdon.se/bygg-verktyg/rela-5-volt-2-kanals-optikt-isolerad-passar-arduino-p49744000|
-|1|Arduino Mega 2560 or nano           |	79	|79		|micro controller	|https://cdon.se/bygg-verktyg/uno-kort-budget-version-av-arduino-uno-r3-p49747251|
-|3|Momentary press button                         |	29	|116	|calibrate, filler1, filler 1 and 2	|https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektromekanik/strombrytare-for-elektronik/tryckstrombrytare/strombrytare-1-pol-frantill-bla-p36023|
+|2|Arduino 5v relay                     |	39	|78		|relä	|https://cdon.se/bygg-verktyg/rela-5-volt-2-kanals-optikt-isolerad-passar-arduino-p49744000|
+|1|Arduino Mega 2560 or nano            | 79	|79		|micro controller	|https://cdon.se/bygg-verktyg/uno-kort-budget-version-av-arduino-uno-r3-p49747251|
+|3|Momentary press button               |	15	|45	|calibrate, filler1, filler 1 and 2	|https://www.electrokit.com/produkt/tryckknapp-1-pol-off-on-metall-bla-lodoron/|
+|1| Patch cable ~5m                     |	99	|99	|Split and use as cabling	|https://www.electrokit.com/produkt/patchkabel-u-utp-cat6a-5m-gra/|
+
+
 
 ## Dual filler
 Just add some more solenoid valves, relays and tubing
@@ -88,7 +91,8 @@ Just add some more solenoid valves, relays and tubing
 |2|Gängad kulkoppling - 1/4" MFL - öl   |	89	|89		|öl-koppling	|https://shop.humle.se/utrustning/kopplingar/fatkopplingar/kulkopplingar/ol/gangad-kulkoppling-14-mfl-ol|
 |4|Arduino 5v relay                      |	39	|78		|relä	|https://cdon.se/bygg-verktyg/rela-5-volt-2-kanals-optikt-isolerad-passar-arduino-p49744000|
 |1|Arduino Mega 2560 or nano           |	79	|79		|micro controller	|https://cdon.se/bygg-verktyg/uno-kort-budget-version-av-arduino-uno-r3-p49747251|
-|3|Momentary press button                         |	29	|116	|calibrate, filler1, filler 1 and 2	|https://www.kjell.com/se/produkter/el-verktyg/elektronik/elektromekanik/strombrytare-for-elektronik/tryckstrombrytare/strombrytare-1-pol-frantill-bla-p36023|
+|4|Momentary press button                         |	15	|60	|calibrate, filler1, filler 1 and 2	|https://www.electrokit.com/produkt/tryckknapp-1-pol-off-on-metall-bla-lodoron/|
+|1| Patch cable ~5m                     |	99	|99	|Split and use as cabling	|https://www.electrokit.com/produkt/patchkabel-u-utp-cat6a-5m-gra/|
 
 
 
