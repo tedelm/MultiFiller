@@ -13,7 +13,6 @@ S = Signal, to arduino (eg. 30,31,32,A10)</br>
     //Arduino Uno/Nano/Mini: All pins are usable
     //Arduino Mega: 10, 11, 12, 13, 50, 51, 52, 53, A8 (62), A9 (63), A10 (64),A11 (65), A12 (66), A13 (67), A14 (68), A15 (69)
 
-
  </br>
 
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/button.png)
@@ -31,4 +30,5 @@ S = Signal, to arduino (22,23,24,25)</br>
     #define GasValve2 25 //Atmega328p-pu pin xx
 
 </br>
+
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/valveRelay.png)
