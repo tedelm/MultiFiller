@@ -67,7 +67,7 @@ button#4
 |1|PET-adapter (plast)                  |	69	|69		|gas-koppling	|https://shop.humle.se/utrustning/fattappning/servering/tillbehor-ovrigt/pet-adapter-plast|
 |1|Gängad kulkoppling - 1/4" MFL - öl   |	89	|89		|öl-koppling	|https://shop.humle.se/utrustning/kopplingar/fatkopplingar/kulkopplingar/ol/gangad-kulkoppling-14-mfl-ol|
 |2|Arduino 5v relay                     |	39	|78		|relä	|https://cdon.se/bygg-verktyg/rela-5-volt-2-kanals-optikt-isolerad-passar-arduino-p49744000|
-|1|Arduino Mega 2560 or nano            | 79	|79		|micro controller	|https://cdon.se/bygg-verktyg/uno-kort-budget-version-av-arduino-uno-r3-p49747251|
+|1|Arduino nano           |	40	|40		|micro controller	|https://www.banggood.com/Geekcreit-ATmega328P-Nano-V3-Controller-Board-Improved-Version-Module-Development-Board-p-940937.html?cur_warehouse=CN&ID=6300464&rmmds=search|
 |3|Momentary press button               |	15	|45	|calibrate, filler1, filler 1 and 2	|https://www.electrokit.com/produkt/tryckknapp-1-pol-off-on-metall-bla-lodoron/|
 |1| Patch cable ~5m                     |	99	|99	|Split and use as cabling	|https://www.electrokit.com/produkt/patchkabel-u-utp-cat6a-5m-gra/|
 
@@ -89,8 +89,8 @@ Just add some more solenoid valves, relays and tubing
 |2|John Guest 3/8" - 1/4" FFL           |	39	|39	    |1 gas, 1 öl	öl/gas koppling	|https://shop.humle.se/utrustning/kopplingar/push-in-kopplingar-jg/jg-38/john-guest-38-14-ffl|
 |2|PET-adapter (plast)                  |	69	|69		|gas-koppling	|https://shop.humle.se/utrustning/fattappning/servering/tillbehor-ovrigt/pet-adapter-plast|
 |2|Gängad kulkoppling - 1/4" MFL - öl   |	89	|89		|öl-koppling	|https://shop.humle.se/utrustning/kopplingar/fatkopplingar/kulkopplingar/ol/gangad-kulkoppling-14-mfl-ol|
-|4|Arduino 5v relay                      |	39	|78		|relä	|https://cdon.se/bygg-verktyg/rela-5-volt-2-kanals-optikt-isolerad-passar-arduino-p49744000|
-|1|Arduino Mega 2560 or nano           |	79	|79		|micro controller	|https://cdon.se/bygg-verktyg/uno-kort-budget-version-av-arduino-uno-r3-p49747251|
+|1| 4in1 Arduino 5v relay                      |	50	|50		|relay	|https://www.banggood.com/Geekcreit-5V-4-Channel-Relay-Module-For-PIC-ARM-DSP-AVR-MSP430-Geekcreit-for-Arduino-products-that-work-with-official-Arduino-boards-p-87987.html?cur_warehouse=CN&rmmds=search|
+|1|Arduino nano           |	40	|40		|micro controller	|https://www.banggood.com/Geekcreit-ATmega328P-Nano-V3-Controller-Board-Improved-Version-Module-Development-Board-p-940937.html?cur_warehouse=CN&ID=6300464&rmmds=search|
 |4|Momentary press button                         |	15	|60	|calibrate, filler1, filler 1 and 2	|https://www.electrokit.com/produkt/tryckknapp-1-pol-off-on-metall-bla-lodoron/|
 |1| Patch cable ~5m                     |	99	|99	|Split and use as cabling	|https://www.electrokit.com/produkt/patchkabel-u-utp-cat6a-5m-gra/|
 
