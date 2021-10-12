@@ -29,6 +29,10 @@ int countButtonPress = 0;
 int Co2PurgeBeforeDelay = 2500; //2,5 seconds
 int Co2PurgeAfterCountLimit = 8; // on/off 8 times
 int Co2PurgeAfterCount = 0; // Counter
+long buttonTimer = 0;
+long longPressTime = 1000;
+boolean buttonActive = false;
+boolean longPressActive = false;
 
 
 void setup() {
@@ -87,11 +91,35 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   // CalibrateButton
-  if (digitalRead(CalibrateButton) == HIGH) {
-    Serial.println("CalibrateButton pressed");
-    CalibrateButtonFunction();
-    delay(250);
-  }
+  //if (digitalRead(CalibrateButton) == HIGH) {
+  //  Serial.println("CalibrateButton pressed");
+  //  CalibrateButtonFunction();
+  //  delay(250);
+  //}
+    //Check if calibration button is pressed short or long
+    if (digitalRead(CalibrateButton) == HIGH) {
+      if (buttonActive == false) {
+        buttonActive = true;
+        buttonTimer = millis();
+      }
+      if ((millis() - buttonTimer > longPressTime) && (longPressActive == false)) {
+        longPressActive = true;
+        Serial.println("CalibrateButton pressed - Long");
+        CalibrateButtonFunction();
+        delay(250);        
+      }else{
+          Serial.println("CalibrateButton pressed - Short");
+          CalibrateButtonPressFunction();
+          delay(250);
+      }
+    } else {
+      if (buttonActive == true) {
+        if (longPressActive == true) {
+          longPressActive = false;
+        }
+        buttonActive = false;
+      }
+    }  
 
   // BeerFiller1Button
   if (digitalRead(BeerFiller1Button) == HIGH) {
@@ -138,6 +166,15 @@ void CalibrateButtonFunction(){
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
     
+}
+
+//Calibrate the time it takes to fill a can
+void CalibrateButtonPressFunction(){
+    String FetchedStrCanFillUpTimeMS = readEEPROM(0);
+    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() + 500; //Add 0,5 seconds per press
+    //Write to EEPROM
+    writeEEPROM(0, String(CanFillUpTime));
+    Serial.println("Saved (ms):" + String(CanFillUpTime));   
 }
 
 //GasValve1 - Co2 Co2 Purge Before filling
