@@ -1,8 +1,6 @@
 #include "EEPROM.h"
 #include "PinChangeInt.h"
 
-///// Define pins ////
-
 //Calibrate - Time how long it takes to fill the can
 #define CalibrateButton 30 //Atmega328p-pu pin xx
 
@@ -90,12 +88,6 @@ String readEEPROM(int addrOffset){
 void loop() {
   // put your main code here, to run repeatedly:
 
-  // CalibrateButton
-  //if (digitalRead(CalibrateButton) == HIGH) {
-  //  Serial.println("CalibrateButton pressed");
-  //  CalibrateButtonFunction();
-  //  delay(250);
-  //}
     //Check if calibration button is pressed short or long
     if (digitalRead(CalibrateButton) == HIGH) {
       if (buttonActive == false) {
@@ -253,8 +245,6 @@ void BeerValveFillCans(){
    Serial.println("End - Beer Valve 1 Fill Can (ms): " + String(CanFillUpTime));
    
 }
-
-
 
 //GasValve1 - Co2 Co2 Purge after filling
 void GasValve1Co2PurgeAfter(){
