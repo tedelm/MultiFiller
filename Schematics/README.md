@@ -4,7 +4,7 @@
 R1 = Resistor 10-50kOhm </br>
 S = Signal, to arduino (eg. 30,31,32,A10)</br>
 
-    - //Calibrate - Time how long it takes to fill the can
+    //Calibrate - Time how long it takes to fill the can
     #define CalibrateButton 30 //Atmega328p-pu pin xx
     //Controller
     #define BeerFiller1Button 31 //Atmega328p-pu pin xx - Only Filler #1
@@ -15,6 +15,7 @@ S = Signal, to arduino (eg. 30,31,32,A10)</br>
 
 
  </br>
+
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/button.png)
 
 ## Relay and valves 
