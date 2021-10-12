@@ -22,5 +22,13 @@ S = Signal, to arduino (eg. 30,31,32,A10)</br>
 V = Solenoid valve</br>
 <- = Diode </br>
 S = Signal, to arduino (22,23,24,25)</br>
+
+    //Filler 1
+    #define BeerValve1 22 //Atmega328p-pu pin xx
+    #define GasValve1 23 //Atmega328p-pu pin xx
+    //Filler 2
+    #define BeerValve2 24 //Atmega328p-pu pin xx
+    #define GasValve2 25 //Atmega328p-pu pin xx
+
 </br>
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/valveRelay.png)
