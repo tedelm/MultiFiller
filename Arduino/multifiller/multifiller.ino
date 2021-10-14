@@ -1,5 +1,12 @@
 #include "EEPROM.h"
 #include "PinChangeInt.h"
+#include <Wire.h>
+#include "LiquidCrystal_I2C.h" //https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
+
+//LCD Screen 1602 I2C
+#define LcdSDApin 20 //Communication I2C Pin (SDA) - Nano A4 / Mega 20
+#define LcdSCLpin 21 //Communication I2C Pin (SCL) - Nano A5 / Mega 21
+LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C address 0x27, 16 column and 2 rows
 
 //Calibrate - Time how long it takes to fill the can
 #define CalibrateButton 30 //Atmega328p-pu pin xx
@@ -37,6 +44,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   Serial.println("Startup...");
+  write2LCD(4,0,"Multifiller 1.0");
 
   //CalibrateButton
   pinMode(CalibrateButton,INPUT);
@@ -58,6 +66,16 @@ void setup() {
 
   attachPinChangeInterrupt(EmergencyShutDownButton, EmergencyShutDownButtonFunction, CHANGE);
 }
+
+//LCD write2LCD(4,0,"")
+void write2LCD(int OffsetColumn, int OffsetRow, const String &strToWrite){
+  lcd.begin();
+  lcd.backlight();
+  lcd.clear();
+  lcd.setCursor(OffsetColumn,OffsetRow); //The cursor is at 4th column(count from 0), and 0th row(count from 0)
+  lcd.print(strToWrite);
+}
+
 
 //EEPROM Write, writeEEPROM(0, "Hello Arduino");
 void writeEEPROM(int addrOffset, const String &strToWrite){
@@ -134,6 +152,7 @@ void loop() {
 void CalibrateButtonFunction(){
     int CanFillUpTimeCalibrated = 0;
     Serial.println("Calibrating");
+    write2LCD(0,1,"Calibrating...");
     while(digitalRead(CalibrateButton) == HIGH){
       Serial.print(".");
       //Start filling beer
@@ -157,6 +176,7 @@ void CalibrateButtonFunction(){
 
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
+    write2LCD(0,1, "Cal ms:" + String(FetchedStrCanFillUpTimeMS));
     
 }
 
@@ -166,7 +186,8 @@ void CalibrateButtonPressFunction(){
     int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() + 500; //Add 0,5 seconds per press
     //Write to EEPROM
     writeEEPROM(0, String(CanFillUpTime));
-    Serial.println("Saved (ms):" + String(CanFillUpTime));   
+    Serial.println("Saved (ms):" + String(CanFillUpTime)); 
+    write2LCD(0,1, "Cal ms:" + String(CanFillUpTime));  
 }
 
 //GasValve1 - Co2 Co2 Purge Before filling
@@ -326,6 +347,7 @@ void EmergencyShutDownButtonFunction(){
     digitalWrite(BeerValve2,LOW);
     Serial.println("Going into softstop");
     SoftStopFunction();
+    
 }
 
 
@@ -351,4 +373,5 @@ void BeerFiller12ButtonFunction(){
   GasValvesCo2PurgeAfter();
   delay(25);
   SoftStopFunction();
+  write2LCD(0,1, "Emergency stdwn");
 }
