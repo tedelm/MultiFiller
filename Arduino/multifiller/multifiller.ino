@@ -3,6 +3,12 @@
 #include <Wire.h>
 #include "LiquidCrystal_I2C.h" //https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
 
+//Flow sensor
+#define flowsensor = 2; // Sensor Input
+int 1L_pulses = 10000; // the amount of pulses for 1 liter of liquid
+int read_pulses; // for test
+float liquid_ml = 0; // liquid_ml = 1000/(1L_pulses / read_pulses); // ml / ((1L * pulses) / inputSignal )
+
 //LCD Screen 1602 I2C
 #define LcdSDApin 20 //Communication I2C Pin (SDA) - Nano A4 / Mega 20
 #define LcdSCLpin 21 //Communication I2C Pin (SCL) - Nano A5 / Mega 21
@@ -44,7 +50,12 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   Serial.println("Startup...");
+
+  //LCD
   write2LCD(4,0,"Multifiller 1.0");
+
+  //Flowsensor
+  pinMode(flowsensor,INPUT);
 
   //CalibrateButton
   pinMode(CalibrateButton,INPUT);
@@ -151,17 +162,26 @@ void loop() {
 //Calibrate the time it takes to fill a can
 void CalibrateButtonFunction(){
     int CanFillUpTimeCalibrated = 0;
+    int read_pulses = 0;
+
     Serial.println("Calibrating");
     write2LCD(0,1,"Calibrating...");
+    
     while(digitalRead(CalibrateButton) == HIGH){
       Serial.print(".");
       //Start filling beer
       digitalWrite(BeerValve1,HIGH);
       delay(CountDelayValueMs);
       CanFillUpTimeCalibrated++;
+
+      //read flowsensor
+      read_pulses += digitalRead(flowsensor);
     }
     //Stop filling beer
     digitalWrite(BeerValve1,LOW);
+
+    //Flowsensor
+    liquid_ml = 1000/(1L_pulses / read_pulses);
     
     //Set new time
     //int CanFillUpTime = CanFillUpTimeCalibrated; //CanFillUpTimeCalibrated * 500 = 0,5 second (1 * 0,5)
@@ -176,7 +196,7 @@ void CalibrateButtonFunction(){
 
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
-    write2LCD(0,1, "Cal ms:" + String(FetchedStrCanFillUpTimeMS));
+    write2LCD(0,1, "Cal ms:" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
     
 }
 
