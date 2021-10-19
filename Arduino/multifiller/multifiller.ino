@@ -4,8 +4,8 @@
 #include "LiquidCrystal_I2C.h" //https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
 
 //Flow sensor
-#define flowsensor = 2; // Sensor Input
-int 1L_pulses = 10000; // the amount of pulses for 1 liter of liquid
+#define flowsensor 2 // Sensor Input
+int Lpulses = 10000; // the amount of pulses for 1 liter of liquid
 int read_pulses; // for test
 float liquid_ml = 0; // liquid_ml = 1000/(1L_pulses / read_pulses); // ml / ((1L * pulses) / inputSignal )
 
@@ -36,6 +36,7 @@ int CanFillUpTimeCalibrated = 0;
 int CanFillUpTime = 0; // Count loops (to be able to store 255 max loops), multiply with CountDelayValueMs
 int Calibratedms = 0;
 int CountDelayValueMs = 500; //should not be lower than 250
+float pressedSeconds = millis();
 int countButtonPress = 0;
 int Co2PurgeBeforeDelay = 2500; //2,5 seconds
 int Co2PurgeAfterCountLimit = 8; // on/off 8 times
@@ -44,6 +45,7 @@ long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
+float mfVersion = 1.0;
 
 
 void setup() {
@@ -52,7 +54,7 @@ void setup() {
   Serial.println("Startup...");
 
   //LCD
-  write2LCD(4,0,"Multifiller 1.0");
+  write2LCD(0,0,"Multifiller " + String(mfVersion),0,1," ");
 
   //Flowsensor
   pinMode(flowsensor,INPUT);
@@ -78,13 +80,15 @@ void setup() {
   attachPinChangeInterrupt(EmergencyShutDownButton, EmergencyShutDownButtonFunction, CHANGE);
 }
 
-//LCD write2LCD(4,0,"")
-void write2LCD(int OffsetColumn, int OffsetRow, const String &strToWrite){
+//LCD write2LCD(0,0,"Multifiller",0,1,"Values")
+void write2LCD(int OffsetColumn, int OffsetRow, const String &strToWrite, int OffsetColumn2, int OffsetRow2, const String &strToWrite2){
   lcd.begin();
   lcd.backlight();
   lcd.clear();
   lcd.setCursor(OffsetColumn,OffsetRow); //The cursor is at 4th column(count from 0), and 0th row(count from 0)
   lcd.print(strToWrite);
+  lcd.setCursor(OffsetColumn2,OffsetRow2); //The cursor is at 4th column(count from 0), and 0th row(count from 0)
+  lcd.print(strToWrite2);  
 }
 
 
@@ -165,49 +169,60 @@ void CalibrateButtonFunction(){
     int read_pulses = 0;
 
     Serial.println("Calibrating");
-    write2LCD(0,1,"Calibrating...");
+    //write2LCD(1,0,"Calibrating...");
+    write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Calibrating...");
+
+    int TimeRightNow = millis();
     
     while(digitalRead(CalibrateButton) == HIGH){
       Serial.print(".");
       //Start filling beer
       digitalWrite(BeerValve1,HIGH);
-      delay(CountDelayValueMs);
-      CanFillUpTimeCalibrated++;
+      pressedSeconds = (millis() - TimeRightNow) / 1000;
+      Serial.print(String(pressedSeconds));
+      //delay(CountDelayValueMs);
+      //CanFillUpTimeCalibrated++;
+      //write2LCD(1,0,"Calibrating...");
+      //write2LCD(0,1, "Cal (s):" + String(pressedSeconds));
+      write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(pressedSeconds));
+      
 
       //read flowsensor
-      read_pulses += digitalRead(flowsensor);
+      //read_pulses += digitalRead(flowsensor);
     }
     //Stop filling beer
     digitalWrite(BeerValve1,LOW);
 
     //Flowsensor
-    liquid_ml = 1000/(1L_pulses / read_pulses);
+    //liquid_ml = 1000/(Lpulses / read_pulses);
     
     //Set new time
     //int CanFillUpTime = CanFillUpTimeCalibrated; //CanFillUpTimeCalibrated * 500 = 0,5 second (1 * 0,5)
-    int StrCanFillUpTimeMS = CountDelayValueMs * CanFillUpTimeCalibrated;
+    //int StrCanFillUpTimeMS = CountDelayValueMs * CanFillUpTimeCalibrated;
     Serial.println(" ");
-    Serial.println("Saving to EEPROM... (Value in ms):" + String(StrCanFillUpTimeMS));
+    Serial.println("Saving to EEPROM... (Value in s):" + String(pressedSeconds));
 
     //Write to EEPROM
-    writeEEPROM(0, String(StrCanFillUpTimeMS));
+    writeEEPROM(0, String(pressedSeconds));
     //EEPROM.update(0, CanFillUpTime);
     Serial.println("Saved");
 
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
-    write2LCD(0,1, "Cal ms:" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
-    
+    //write2LCD(1,0,"Multifiller 1.0");
+    write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
+    //write2LCD(0,1, "Cal (s):" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
 }
 
 //Calibrate the time it takes to fill a can
 void CalibrateButtonPressFunction(){
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
-    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() + 500; //Add 0,5 seconds per press
+    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() + 1; //Add 1 seconds per press
     //Write to EEPROM
     writeEEPROM(0, String(CanFillUpTime));
-    Serial.println("Saved (ms):" + String(CanFillUpTime)); 
-    write2LCD(0,1, "Cal ms:" + String(CanFillUpTime));  
+    Serial.println("Saved (s):" + String(CanFillUpTime)); 
+    //write2LCD(0,1, "Cal (s):" + String(CanFillUpTime));  
+    write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(CanFillUpTime));
 }
 
 //GasValve1 - Co2 Co2 Purge Before filling
@@ -241,15 +256,18 @@ void BeerValve1FillCan(){
 
     //Read from EEPROM
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
-    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt();
+    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() * 1000;
     Serial.println("Read from EEPROM: " + String(CanFillUpTime));
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
+    write2LCD(0,0,"Filling up",0,1,"One Can (s):"+ String(FetchedStrCanFillUpTimeMS));
+    
     digitalWrite(BeerValve1,HIGH);
+    delay(CanFillUpTime);
+    digitalWrite(BeerValve1,LOW);
    
-   delay(CanFillUpTime);
-   digitalWrite(BeerValve1,LOW);
    Serial.println("End - Beer Valve 1 Fill Can (ms): " + String(CanFillUpTime));
+   write2LCD(0,0,"Done filling",0,1,"Time: " + String(FetchedStrCanFillUpTimeMS));
 }
 
 //BeerValve2 - Fill can
@@ -257,7 +275,7 @@ void BeerValve2FillCan(){
   Serial.println("BeerValve2FillCan");
     //Read from EEPROM
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
-    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt();
+    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() * 1000;
     Serial.println("Read from EEPROM: " + String(CanFillUpTime));
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
@@ -273,10 +291,11 @@ void BeerValve2FillCan(){
 void BeerValveFillCans(){
     //Read from EEPROM
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
-    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt();
+    int CanFillUpTime = FetchedStrCanFillUpTimeMS.toInt() * 1000;
     Serial.println("Read from EEPROM: " + String(CanFillUpTime));
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
+    write2LCD(0,0,"Filling up",0,1,"Two Cans (s):"+ String(FetchedStrCanFillUpTimeMS));
     digitalWrite(BeerValve1,HIGH);
     digitalWrite(BeerValve2,HIGH);
   
@@ -284,6 +303,7 @@ void BeerValveFillCans(){
    digitalWrite(BeerValve1,LOW);
    digitalWrite(BeerValve2,LOW);
    Serial.println("End - Beer Valve 1 Fill Can (ms): " + String(CanFillUpTime));
+   write2LCD(0,0,"Done filling",0,1,"Time: " + String(FetchedStrCanFillUpTimeMS));
    
 }
 
@@ -374,8 +394,10 @@ void EmergencyShutDownButtonFunction(){
 //Run first beerfiller
 void BeerFiller1ButtonFunction(){
   Serial.println("BeerFiller 1 Button Function");
+  write2LCD(0,0,"Co2 Purge",0,1,"first can");
   GasValve1Co2PurgeBefore();
   delay(25);
+  write2LCD(0,0,"Start fillup",0,1,"...");
   BeerValve1FillCan();
   delay(25);
   GasValve1Co2PurgeAfter();
@@ -386,12 +408,15 @@ void BeerFiller1ButtonFunction(){
 //Run both fillers
 void BeerFiller12ButtonFunction(){
   Serial.println("BeerFiller 1-2 Button Function");
+  write2LCD(0,0,"Co2 Purge",0,1,"both cans");
   GasValvesCo2PurgeBefore();
   delay(25);
+  write2LCD(0,0,"Start fillup",0,1,"...");
   BeerValveFillCans();
   delay(25);
   GasValvesCo2PurgeAfter();
   delay(25);
   SoftStopFunction();
-  write2LCD(0,1, "Emergency stdwn");
+  //write2LCD(0,1, "Emergency stdwn");
+  //write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Emergency stdwn");
 }
