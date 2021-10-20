@@ -45,7 +45,7 @@ long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
-float mfVersion = 1.0;
+float mfVersion = 0.2;
 
 
 void setup() {
@@ -180,12 +180,8 @@ void CalibrateButtonFunction(){
       digitalWrite(BeerValve1,HIGH);
       pressedSeconds = (millis() - TimeRightNow) / 1000;
       Serial.print(String(pressedSeconds));
-      //delay(CountDelayValueMs);
-      //CanFillUpTimeCalibrated++;
-      //write2LCD(1,0,"Calibrating...");
-      //write2LCD(0,1, "Cal (s):" + String(pressedSeconds));
+
       write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(pressedSeconds));
-      
 
       //read flowsensor
       //read_pulses += digitalRead(flowsensor);
@@ -196,9 +192,6 @@ void CalibrateButtonFunction(){
     //Flowsensor
     //liquid_ml = 1000/(Lpulses / read_pulses);
     
-    //Set new time
-    //int CanFillUpTime = CanFillUpTimeCalibrated; //CanFillUpTimeCalibrated * 500 = 0,5 second (1 * 0,5)
-    //int StrCanFillUpTimeMS = CountDelayValueMs * CanFillUpTimeCalibrated;
     Serial.println(" ");
     Serial.println("Saving to EEPROM... (Value in s):" + String(pressedSeconds));
 
@@ -209,9 +202,8 @@ void CalibrateButtonFunction(){
 
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
-    //write2LCD(1,0,"Multifiller 1.0");
+
     write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
-    //write2LCD(0,1, "Cal (s):" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
 }
 
 //Calibrate the time it takes to fill a can
@@ -417,6 +409,4 @@ void BeerFiller12ButtonFunction(){
   GasValvesCo2PurgeAfter();
   delay(25);
   SoftStopFunction();
-  //write2LCD(0,1, "Emergency stdwn");
-  //write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Emergency stdwn");
 }
