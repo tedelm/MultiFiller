@@ -45,7 +45,7 @@ long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
-float mfVersion = 0.2;
+float mfVersion = 0.21;
 
 
 void setup() {
@@ -172,7 +172,7 @@ void CalibrateButtonFunction(){
     //write2LCD(1,0,"Calibrating...");
     write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Calibrating...");
 
-    int TimeRightNow = millis();
+    unsigned long TimeRightNow = millis();
     
     while(digitalRead(CalibrateButton) == HIGH){
       Serial.print(".");
@@ -182,7 +182,7 @@ void CalibrateButtonFunction(){
       Serial.print(String(pressedSeconds));
 
       write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(pressedSeconds));
-
+      delay(25);
       //read flowsensor
       //read_pulses += digitalRead(flowsensor);
     }
@@ -253,13 +253,37 @@ void BeerValve1FillCan(){
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
     write2LCD(0,0,"Filling up",0,1,"One Can (s):"+ String(FetchedStrCanFillUpTimeMS));
-    
+
     digitalWrite(BeerValve1,HIGH);
-    delay(CanFillUpTime);
+    
+    unsigned long TimeRightNow = millis();
+    unsigned long currentFillupSeconds;
+    int CanFillUpTimeSec = CanFillUpTime / 1000;
+    boolean FillupComplete = false;
+    
+    while(FillupComplete == false){
+      
+      int currentFillupSeconds = (millis() - TimeRightNow)/1000;
+      Serial.println(String(currentFillupSeconds)+ " " + String(CanFillUpTimeSec));
+      write2LCD(0,0,"Fillup (s):",0,1,String(CanFillUpTimeSec)+"/"+String(currentFillupSeconds));
+      delay(25);
+
+      if(int(currentFillupSeconds) >= int(CanFillUpTimeSec)){
+        Serial.println("Fillup complete!");
+        FillupComplete = true;
+      }
+      
+    }
+    
+    //delay(CanFillUpTime);
     digitalWrite(BeerValve1,LOW);
+
+   TimeRightNow = 0;
+   currentFillupSeconds = 0;
+   FillupComplete = false;
    
-   Serial.println("End - Beer Valve 1 Fill Can (ms): " + String(CanFillUpTime));
-   write2LCD(0,0,"Done filling",0,1,"Time: " + String(FetchedStrCanFillUpTimeMS));
+   Serial.println("End - Beer Valve 1 Fill Can (s): " + String(CanFillUpTimeSec));
+   write2LCD(0,0,"Done filling",0,1,"Time (s): " + String(CanFillUpTimeSec));
 }
 
 //BeerValve2 - Fill can
@@ -287,15 +311,39 @@ void BeerValveFillCans(){
     Serial.println("Read from EEPROM: " + String(CanFillUpTime));
     //int CanFillUpTime = EEPROM.read(0);
     Serial.println("Start - Beer Valve 1 Fill Can (CountDelayValueMs * " + String(CanFillUpTime) +")");
-    write2LCD(0,0,"Filling up",0,1,"Two Cans (s):"+ String(FetchedStrCanFillUpTimeMS));
+    //write2LCD(0,0,"Filling up",0,1,"Two Cans (s):"+ String(FetchedStrCanFillUpTimeMS));
     digitalWrite(BeerValve1,HIGH);
     digitalWrite(BeerValve2,HIGH);
+
+    unsigned long TimeRightNow = millis();
+    unsigned long currentFillupSeconds; 
+    int CanFillUpTimeSec = CanFillUpTime / 1000;
+    boolean FillupComplete = false;
+    
+    while(FillupComplete == false){
+      
+      int currentFillupSeconds = (millis() - TimeRightNow)/1000;
+      Serial.println(String(currentFillupSeconds)+ " " + String(CanFillUpTimeSec));
+      write2LCD(0,0,"Fillup (s):",0,1,String(CanFillUpTimeSec)+"/"+String(currentFillupSeconds));
+      delay(25);
+
+      if(int(currentFillupSeconds) >= int(CanFillUpTimeSec)){
+        Serial.println("Fillup complete!");
+        FillupComplete = true;
+      }
+      
+    }    
   
-   delay(CanFillUpTime);
+   //delay(CanFillUpTime);
    digitalWrite(BeerValve1,LOW);
    digitalWrite(BeerValve2,LOW);
-   Serial.println("End - Beer Valve 1 Fill Can (ms): " + String(CanFillUpTime));
-   write2LCD(0,0,"Done filling",0,1,"Time: " + String(FetchedStrCanFillUpTimeMS));
+
+   TimeRightNow = 0;
+   currentFillupSeconds = 0;
+   FillupComplete = false;
+   
+   Serial.println("End - Beer Valve 1/2 Fill Can (s): " + String(CanFillUpTimeSec));
+   write2LCD(0,0,"Done filling",0,1,"Time: " + String(CanFillUpTimeSec));
    
 }
 
