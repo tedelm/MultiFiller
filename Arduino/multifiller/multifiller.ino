@@ -12,7 +12,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C address 0x27, 16 column and 2 rows
 #define CalibrateButton 30 //Atmega328p-pu pin xx
 
 //Controller
-#define BeerFiller1Button 31 //Atmega328p-pu pin xx - Only Filler #1
+#define BeerFiller1Button 31 //Atmega328p-pu pin xx - Only Filler #1 
 #define BeerFiller12Button 32 //Atmega328p-pu pin xx - Run both fillers
 #define EmergencyShutDownButton A10 //Atmega328p-pu interrupt pin xx - Stop everything
 //Arduino Uno/Nano/Mini: All pins are usable
