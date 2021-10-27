@@ -3,12 +3,6 @@
 #include <Wire.h>
 #include "LiquidCrystal_I2C.h" //https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
 
-//Flow sensor
-#define flowsensor 2 // Sensor Input
-int Lpulses = 10000; // the amount of pulses for 1 liter of liquid
-int read_pulses; // for test
-float liquid_ml = 0; // liquid_ml = 1000/(1L_pulses / read_pulses); // ml / ((1L * pulses) / inputSignal )
-
 //LCD Screen 1602 I2C
 #define LcdSDApin 20 //Communication I2C Pin (SDA) - Nano A4 / Mega 20
 #define LcdSCLpin 21 //Communication I2C Pin (SCL) - Nano A5 / Mega 21
@@ -32,6 +26,8 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C address 0x27, 16 column and 2 rows
 #define GasValve2 25 //Atmega328p-pu pin xx
 
 //Define values
+float mfVersion = 0.24; // Firmware Version
+int BothCanFillupComp = 1.20; // Fillup compensation for pressure loss 1.20 = 20% extra
 int CanFillUpTimeCalibrated = 0;
 int CanFillUpTime = 0; // Count loops (to be able to store 255 max loops), multiply with CountDelayValueMs
 int Calibratedms = 0;
@@ -45,7 +41,7 @@ long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
-float mfVersion = 0.23;
+
 
 
 void setup() {
@@ -55,9 +51,6 @@ void setup() {
 
   //LCD
   write2LCD(0,0,"Multifiller " + String(mfVersion),0,1," ");
-
-  //Flowsensor
-  //pinMode(flowsensor,INPUT);
 
   //CalibrateButton
   pinMode(CalibrateButton,INPUT);
@@ -166,7 +159,6 @@ void loop() {
 //Calibrate the time it takes to fill a can
 void CalibrateButtonFunction(){
     int CanFillUpTimeCalibrated = 0;
-    int read_pulses = 0;
 
     Serial.println("Calibrating");
     write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Calibrating...");
@@ -182,16 +174,10 @@ void CalibrateButtonFunction(){
 
       write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(pressedSeconds));
       delay(25);
-      //read flowsensor
-      //read_pulses += digitalRead(flowsensor);
+
     }
     //Stop filling beer
     digitalWrite(BeerValve1,LOW);
-
-    //Serial.println("Read pulses: " + String(read_pulses));
-    //Flowsensor
-    //liquid_ml = 1000/(Lpulses / read_pulses);
-    //Serial.println("Read liquid:" + String(liquid_ml));
     
     Serial.println(" ");
     Serial.println("Saving to EEPROM... (Value in s):" + String(pressedSeconds));
@@ -204,7 +190,7 @@ void CalibrateButtonFunction(){
     String FetchedStrCanFillUpTimeMS = readEEPROM(0);
     Serial.println("Read from EEPROM: " + String(FetchedStrCanFillUpTimeMS));
 
-    write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(FetchedStrCanFillUpTimeMS) + " " + String(liquid_ml));
+    write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Cal (s):" + String(FetchedStrCanFillUpTimeMS));
 }
 
 //Calibrate the time it takes to fill a can
@@ -318,7 +304,7 @@ void BeerValveFillCans(){
 
     unsigned long TimeRightNow = millis();
     unsigned long currentFillupSeconds; 
-    int CanFillUpTimeSec = CanFillUpTime / 1000;
+    int CanFillUpTimeSec = (CanFillUpTime / 1000) * BothCanFillupComp; //Add compensation for both cans being filled
     boolean FillupComplete = false;
     
     while(FillupComplete == false){
