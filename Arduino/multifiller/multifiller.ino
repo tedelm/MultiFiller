@@ -4,7 +4,7 @@
 #include "LiquidCrystal_I2C.h" //https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
 
 //LCD Screen 1602 I2C
-#define LcdSDApin 20 //Communication I2C Pin (SDA) - Nano A4 / Mega 20
+#define LcdSDApin 20 //Communication I2C Pin (SDA) - Nano A4 / Mega 20 
 #define LcdSCLpin 21 //Communication I2C Pin (SCL) - Nano A5 / Mega 21
 LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C address 0x27, 16 column and 2 rows
 
@@ -36,12 +36,11 @@ float pressedSeconds = millis();
 int countButtonPress = 0;
 int Co2PurgeBeforeDelay = 2500; //2,5 seconds
 int Co2PurgeAfterCountLimit = 8; // on/off 8 times
-int Co2PurgeAfterCount = 0; // Counter
+int Co2PurgeAfterCount = 0; // Count
 long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
-
 
 
 void setup() {
