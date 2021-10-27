@@ -45,7 +45,7 @@ long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
-float mfVersion = 0.21;
+float mfVersion = 0.22;
 
 
 void setup() {
@@ -57,7 +57,7 @@ void setup() {
   write2LCD(0,0,"Multifiller " + String(mfVersion),0,1," ");
 
   //Flowsensor
-  pinMode(flowsensor,INPUT);
+  //pinMode(flowsensor,INPUT);
 
   //CalibrateButton
   pinMode(CalibrateButton,INPUT);
@@ -169,7 +169,6 @@ void CalibrateButtonFunction(){
     int read_pulses = 0;
 
     Serial.println("Calibrating");
-    //write2LCD(1,0,"Calibrating...");
     write2LCD(0,0,"Multifiller " + String(mfVersion),0,1,"Calibrating...");
 
     unsigned long TimeRightNow = millis();
@@ -189,8 +188,10 @@ void CalibrateButtonFunction(){
     //Stop filling beer
     digitalWrite(BeerValve1,LOW);
 
+    //Serial.println("Read pulses: " + String(read_pulses));
     //Flowsensor
     //liquid_ml = 1000/(Lpulses / read_pulses);
+    //Serial.println("Read liquid:" + String(liquid_ml));
     
     Serial.println(" ");
     Serial.println("Saving to EEPROM... (Value in s):" + String(pressedSeconds));
