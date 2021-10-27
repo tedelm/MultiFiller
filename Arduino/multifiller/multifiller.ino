@@ -45,7 +45,7 @@ long buttonTimer = 0;
 long longPressTime = 1000;
 boolean buttonActive = false;
 boolean longPressActive = false;
-float mfVersion = 0.22;
+float mfVersion = 0.23;
 
 
 void setup() {
