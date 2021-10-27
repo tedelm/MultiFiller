@@ -29,5 +29,7 @@ The holes did not work out... so cut some more out to fit the buttons and screen
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/mfiller_build_04a.jpg)
 </br>
 
+![img](https://github.com/tedelm/MultiFiller/blob/main/img/schematic.png)
+
 </br>
 I really need to make this into a box...</br>
