@@ -12,16 +12,16 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 
 * [Build](https://github.com/tedelm/MultiFiller/blob/main/Build/README.md)
 * [Schematics](https://github.com/tedelm/MultiFiller/blob/main/Schematics/README.md)
-* Videos 
+* [Videos](https://youtu.be/LUoDoRMrJUI)
 * Parts
 
 </br>
 
 # How to use
-button#1 = Calibration (Press and hold)</br>
-button#2 = Filler #1 (Momentarily press)</br>
-button#3 = Filler #1 and Filler #2 at same time (Momentarily press)</br>
-button#4 = Emergency shutdown (Press and hold)</br>
+button#1 (Yellow) = Calibration (Press and hold)</br>
+button#2 (Green)  = Filler #1 (Momentarily press)</br>
+button#3 (Blue)   = Filler #1 and Filler #2 at same time (Momentarily press)</br>
+button#4 (Red)    = Emergency shutdown (Press and hold)</br>
 
 ## Calibration
 Button#1
@@ -43,7 +43,7 @@ Button#2
 ## Filler #1 and #2
 Button#3
 
-    - Momentarily press button#2
+    - Momentarily press button#3
        Filler#1 and #2: Co2 will purge for 4 seconds
        Filler#1 and #2: Beer flows for x (calibrated seconds)
        Filler#1 and #2: Co2 will purge on/off rapidly 8 times
@@ -100,6 +100,3 @@ Just add some more solenoid valves, relays and tubing
 |4|Momentary press button                         |	15	|60	|calibrate, filler1, filler 1 and 2	|https://www.electrokit.com/produkt/tryckknapp-1-pol-off-on-metall-bla-lodoron/|
 |1| Patch cable ~5m                     |	99	|99	|Split and use as cabling	|https://www.electrokit.com/produkt/patchkabel-u-utp-cat6a-5m-gra/|
 
-
-
-![image](https://user-images.githubusercontent.com/26909079/136558059-81aed116-e799-4ba0-a810-7905bc2db499.png)
