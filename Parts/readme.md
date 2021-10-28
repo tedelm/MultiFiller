@@ -43,3 +43,19 @@ Just add some more solenoid valves, relays and tubing
 |4|Momentary press button                         |	15	|60	|calibrate, filler1, filler 1 and 2	|https://www.electrokit.com/produkt/tryckknapp-1-pol-off-on-metall-bla-lodoron/|
 |1| Patch cable ~5m                     |	99	|99	|Split and use as cabling	|https://www.electrokit.com/produkt/patchkabel-u-utp-cat6a-5m-gra/|
 
+
+## Solenoid valve specs
+
+Power: Solenoid
+Port Size: 1/4" (6,35mm) or 3/8" (9.52mm)
+Model Number: 1/4" OR 3/8" OD
+Standard or Nonstandard: Standard
+Temperature of Media: Normal Temperature
+Material: Plastic
+Structure: Diaphragm
+Pressure: 0-0.8Mpa
+Media: Water, air, oil. etc.
+Voltage:: DC 12V
+Port:: 1/4", 3/8" OD Hose
+Power: Solenoid
+Material: Plastic
