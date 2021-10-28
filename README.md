@@ -13,7 +13,7 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 * [Build](https://github.com/tedelm/MultiFiller/blob/main/Build/README.md)
 * [Schematics](https://github.com/tedelm/MultiFiller/blob/main/Schematics/README.md)
 * [Video(s)](https://youtu.be/LUoDoRMrJUI)
-* Parts
+* [Parts](https://github.com/tedelm/MultiFiller/blob/main/Parts/readme.md)
 
 </br>
 
