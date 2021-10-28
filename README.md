@@ -1,5 +1,5 @@
 # MultiFiller
-Modual Beercan filler </br></br>
+Modular Beercan/Bottle filler </br></br>
 MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/mockup.png)
