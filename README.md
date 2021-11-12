@@ -20,6 +20,13 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/mfiller_mockUp_counterpressure_06.JPG)</br>
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/mfiller_mockUp_counterpressure_07.JPG)</br>
 
+Partslist
+- MFIller_CAN_CounterPressure_w_gasline_noVitamins-TPU.stl
+- MFiller_guide_cylinder_mount-PLA.stl
+- MFiller_guide_cylinder-PLA_v1.1.stl
+- MFiller_guide_cylinder-stopper-PLA_v1.1.stl
+- 1/4" pipe (stainless steel)
+
 </br>
 
 # How to use
