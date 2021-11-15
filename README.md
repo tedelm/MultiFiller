@@ -30,7 +30,7 @@ Parts list:
 - 1/4" tube (PE) [Link](https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter)
 - Rubberband (available at any random convinient store) [Link](https://www.clasohlson.com/se/Gummiband/p/Pr342290016)
 - Optional:
-    - Manual Air Valve 1/4" [Link](https://akvarieimporten.se/tillbehor/kopplingar-syresten/luftkran-i-plast-1-vags-for-luftslang-46-mm)
+    - Manual Air Valve 1/4" [Link](https://akvarieimporten.se/tillbehor/kopplingar-syresten/luftkran-i-plast-1-vags-for-luftslang-46-mm) (Could be used for Co2 inlet, Co2 Outlet, and beer lines)
 
 
 </br>
