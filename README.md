@@ -21,10 +21,10 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/mfiller_mockUp_counterpressure_07.JPG)</br>
 
 Parts list:
-- MFIller_CAN_CounterPressure_w_gasline_noVitamins-TPU.stl [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) [Link - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFIller_CAN_CounterPressure_w_gasline_noVitamins-TPU.stl)
-- MFiller_guide_cylinder_mount-PLA.stl  [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) 
-- MFiller_guide_cylinder-PLA_v1.1.stl  [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) 
-- MFiller_guide_cylinder-stopper-PLA_v1.1.stl   [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) 
+- MFIller_CAN_CounterPressure_w_gasline_noVitamins-TPU.stl [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Link - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFIller_CAN_CounterPressure_w_gasline_noVitamins-TPU.stl)
+- MFiller_guide_cylinder_mount-PLA.stl  [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Link - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_guide_cylinder_mount-PLA.stl)
+- MFiller_guide_cylinder-PLA_v1.1.stl  [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Link - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_guide_cylinder-PLA_v1.1.stl)
+- MFiller_guide_cylinder-stopper-PLA_v1.1.stl   [Download](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Link - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_guide_cylinder-stopper-PLA_v1.1.stl)
 - 1/4" pipe/rod (stainless steel) [Link](https://www.maskindelen.se/product/rostfritt-ror-6x1)
 - 1/4" tube (PVC/silicon) [Link](https://akvarieimporten.se/tillbehor/luftslang/pvc-luftslang-46-mm-transparent)
 - 1/4" tube (PE) [Link](https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter)
