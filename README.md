@@ -25,7 +25,7 @@ Parts list:
 - MFiller_guide_cylinder_mount-PLA.stl  [STL List](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Download - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_guide_cylinder_mount-PLA.stl)
 - MFiller_guide_cylinder-PLA_v1.1.stl  [STL List](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Download - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_guide_cylinder-PLA_v1.1.stl)
 - MFiller_guide_cylinder-stopper-PLA_v1.1.stl   [STL List](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Download - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_guide_cylinder-stopper-PLA_v1.1.stl)
-- CAN_Shelf.stl    [STL List](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Download - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/CAN_Shelf.stl)
+- MFiller_CAN_Shelf-PLA.stl    [STL List](https://github.com/tedelm/MultiFiller/tree/main/stl) or [Download - (RightClickSaveAs)](https://github.com/tedelm/MultiFiller/blob/main/stl/MFiller_CAN_Shelf-PLA.stl)
 - 1/4" pipe/rod (stainless steel) [Link](https://www.maskindelen.se/product/rostfritt-ror-6x1)
 - 1/4" tube (PVC/silicon) [Link](https://akvarieimporten.se/tillbehor/luftslang/pvc-luftslang-46-mm-transparent)
 - 1/4" tube (PE) [Link](https://shop.humle.se/utrustning/slang/polyeten-pe/pe-slang-neutral-14-yd-per-meter)
