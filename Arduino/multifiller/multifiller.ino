@@ -26,7 +26,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C address 0x27, 16 column and 2 rows
 #define GasValve2 25 //Atmega328p-pu pin xx
 
 //Define values
-float mfVersion = 0.24; // Firmware Version
+float mfVersion = 0.25; // Firmware Version
 int BothCanFillupComp = 1.20; // Fillup compensation for pressure loss 1.20 = 20% extra
 int CanFillUpTimeCalibrated = 0;
 int CanFillUpTime = 0; // Count loops (to be able to store 255 max loops), multiply with CountDelayValueMs
@@ -35,7 +35,7 @@ int CountDelayValueMs = 500; //should not be lower than 250
 float pressedSeconds = millis();
 int countButtonPress = 0;
 int Co2PurgeBeforeDelay = 2500; //2,5 seconds
-int Co2PurgeAfterCountLimit = 8; // on/off 8 times
+int Co2PurgeAfterCountLimit = 1; // on/off 1 times
 int Co2PurgeAfterCount = 0; // Count
 long buttonTimer = 0;
 long longPressTime = 1000;
@@ -336,12 +336,12 @@ void BeerValveFillCans(){
 //GasValve1 - Co2 Co2 Purge after filling
 void GasValve1Co2PurgeAfter(){
   Serial.println("GasValve1Co2PurgeAfter");
-  while(Co2PurgeAfterCount <= Co2PurgeAfterCountLimit){
+  while(Co2PurgeAfterCount < Co2PurgeAfterCountLimit){
    Serial.print("+");
    digitalWrite(GasValve1,HIGH);
-   delay(25);
+   delay(10);
    digitalWrite(GasValve1,LOW);
-   delay(25);
+   delay(10);
    Co2PurgeAfterCount++;
   }
   Serial.println("+");
@@ -353,12 +353,12 @@ void GasValve1Co2PurgeAfter(){
 //GasValve2 - Co2 Co2 Purge after filling
 void GasValve2Co2PurgeAfter(){
   Serial.println("GasValve2Co2PurgeAfter");
-  while(Co2PurgeAfterCount <= Co2PurgeAfterCountLimit){
+  while(Co2PurgeAfterCount < Co2PurgeAfterCountLimit){
     Serial.print("+");
    digitalWrite(GasValve2,HIGH);
-   delay(25);
+   delay(10);
    digitalWrite(GasValve2,LOW);
-   delay(25);
+   delay(10);
    Co2PurgeAfterCount++;
   }
   Serial.println("+");

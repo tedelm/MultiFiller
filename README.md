@@ -2,6 +2,8 @@
 Modular Beercan/Bottle filler </br></br>
 MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 
+!This is a "work in progress" project!
+
 ![img](https://github.com/tedelm/MultiFiller/blob/main/img/mockup.png)
 
 ## In action Youtube video
@@ -14,6 +16,12 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 * [Schematics](https://github.com/tedelm/MultiFiller/blob/main/Schematics/README.md)
 * [Video(s)](https://youtu.be/LUoDoRMrJUI)
 * [Parts](https://github.com/tedelm/MultiFiller/blob/main/Parts/readme.md)
+
+## Todo/Checklist
+
+Counter pressure filling
+[] - Verify design
+[] - Verify minimal foam build up when filling
 
 ## Counter Pressure filling
 
