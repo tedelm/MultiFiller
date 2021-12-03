@@ -21,8 +21,8 @@ MultiFiller is a OpenSource semi-auto beercan or bottle filler.</br></br>
 
 Counter pressure filling
 
-[ ] - Verify design
-[ ] - Verify minimal foam build up when filling
+- [ ] Verify design
+- [ ] Verify minimal foam build up when filling
 
 ## Counter Pressure filling
 
